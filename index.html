@@ -161,7 +161,7 @@ const hm = m => m == null ? 'אין' : `${String(Math.floor(m / 60) % 24).padSta
 function panels(el, windows, title, sub) {
   const groups = Object.keys(G), PW = 150, GAP = 22, x0 = 560, y0 = 96, RH = 28;
   const px = i => x0 - i * (PW + GAP), yy = g => y0 + g * RH + (g >= 3 ? 18 : 0);
-  let s = `<svg viewBox="0 0 760 ${y0 + 6 * RH + 30}" role="img" aria-label="${esc(title)}" font-size="12">`;
+  let s = `<svg viewBox="0 0 760 ${y0 + 6 * RH + 30}" role="img" aria-label="${esc(title)}" font-size="12" direction="ltr">`;
   s += `<text x="740" y="24" text-anchor="end" font-size="15" font-weight="600" fill="currentColor">${esc(title)}</text>`;
   s += `<text x="740" y="44" text-anchor="end" fill="var(--mut)">${esc(sub)}</text>`;
   windows.forEach(([key, label], i) => {
