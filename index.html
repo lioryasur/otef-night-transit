@@ -221,6 +221,7 @@ function tripsTable(d, w) {
 }
 function show(code) {
   const d = DATA.find(x => x.code === code);
+  history.replaceState(null, '', '#s=' + code);  // shareable link to this settlement
   list.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.c === code));
   map.setView([d.lat, d.lon], Math.max(map.getZoom(), 11));
   const ta = d.rides['תל אביב (סבידור)'];
@@ -238,6 +239,8 @@ function show(code) {
   document.getElementById('detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 renderList();
+const linked = location.hash.match(/^#s=(\d+)$/);
+if (linked && DATA.some(d => d.code === linked[1])) show(linked[1]);
 </script>
 </body>
 </html>
